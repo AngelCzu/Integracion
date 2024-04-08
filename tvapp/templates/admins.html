@@ -1,0 +1,118 @@
+{% extends "./baseInicio.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/styleAdmin.css' %}">
+<title>Administracion</title>
+{% endblock %}
+
+{% block body %}
+<section class="home">
+    <div class="text title"><h1><strong>ADMINISTRACIÓN</strong></h1></div>
+    <div class="container">
+    <!-- Fin Tabla -->
+
+    <div id="contenedorAgregarProd" class="container mt-2 mb-5">
+        <form id="formAgregarproducto" action="/agregarProductoForm" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            <div class="row">
+                <div class="text title"><h3><strong>Agregar un producto</strong></h3></div>
+                <div class="col-md-4">
+                    <label for="txtSku" class="text fs-6">SKU:</label>
+                    <input onblur="validarFormulario()" name="txtSku" id="txtSku" class="form-control" type="text" placeholder="Ingrese un precio">
+                    <small id="valSKU" class="">Debe ingresar un SKU</small>
+                </div>
+                <div class="col-md-4">
+                    <label for="txtPrecio" class="text fs-6">Precio:</label>
+                    <input onblur="validarFormulario()" name="txtPrecio" id="txtPrecio" class="form-control" type="text" placeholder="Ingrese un precio">
+                    <small id="valPrecio" class="">Debe ingresar un precio</small>
+                </div>
+                <div class="col-md-4">
+                    <label for="txtStock" class="text fs-6">Stock:</label>
+                    <input onblur="validarFormulario()" name="txtStock" id="txtStock" class="form-control" type="text" placeholder="Ingrese el stock">
+                    <small id="valStock" class="">Debe ingresar un stock</small>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtNombre" class="text fs-6">Nombre:</label>
+                    <input onblur="validarFormulario()" name="txtNombre" id="txtNombre" class="form-control" type="text" placeholder="Ingrese el nombre">
+                    <small id="valNombre" class="">Debe ingresar un nombre</small>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtDescripcion" class="text fs-6">Descripción:</label>
+                    <input onblur="validarFormulario()" name="txtDescripcion" id="txtDescripcion" class="form-control" type="text" placeholder="Ingrese una descripcion">
+                    <small id="valDescripcion" class="">Debe ingresar una descripcion</small>
+                </div>
+                <div class="col-md-6">
+                    <label for="txtImagen" class="text fs-6">Imagen:</label>
+                    <input onblur="validarFormulario()" name="txtImagen" id="txtImagen" class="form-control" type="file" >
+                    <small id="valImagen" class="">Debe ingresar una imagen</small>
+                </div>
+                <div class="col-md-6">
+                    <label for="cmbCategoria" class="text fs-6">Categoria:</label>
+                    <select onblur="validarFormulario()" name="cmbCategoria" id="cmbCategoria" class="form-select" aria-label="Default select example">
+                        <option disabled selected>Seleccione</option>
+                        {% for i in cate %}
+                        <option value="{{i.id_categoria}}">{{i.nombre}}</option>
+                        {% endfor %}
+                      </select>
+                      <small id="valCategoria" class="">Debe ingresar una categoria</small>
+                </div>
+            </div>
+            <button id="btnAgregar" onclick="validarFormulario()" class="btn btn-success mt-5 w-100">Agregar producto</button>
+        </form>
+    </div>
+
+    
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th scope="col">SKU</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in prod %}
+            <tr>
+                <th scope="row">{{c.sku}}</th>
+                <td><img src="{{c.imagen.url}}" height="50" alt=""></td>
+                <td>{{c.precio}}</td>
+                <td>{{c.nombre}}</td>
+                <td>{{c.descripcion}}</td>
+                <td>{{c.stock}}</td>
+                <td>{{c.categoria_id}}</td>
+                <td>
+                    <div class="d-grid gap-2 d-md-block">
+                        <!-- Button trigger modal -->
+                        <a href="/eliminarProd/{{c.sku}}"><button id="btn_con" class="btn btn-danger" type="button" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Eliminar</button>
+                        </a>
+                        <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+                            <div class="d-flex">
+                                <div class="toast-body">
+                                Hello, world! This is a toast message.
+                                </div>
+                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <a href="/editarProd/{{c.sku}}"><button id="btn_con" class="btn btn-primary" type="button">Editar</button></a>
+                    </div>
+                </td>
+
+
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+</section>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+<script src="{% static 'js/admin.js' %}"></script>
+{% endblock %}

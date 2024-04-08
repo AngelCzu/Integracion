@@ -1,0 +1,47 @@
+{% extends "./baseInicio.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tienda.css' %}">
+<title>Tienda</title>
+{% endblock %}
+
+{% block body %}
+<body>
+  
+  
+    <!-- Inicio Tienda -->
+    <section class="home">
+      <div class="container">
+        <div class="text text-center"><h1 class="mt-3"><strong>FLORES</strong></h1></div>
+        <a id="linkFlores" href="productos.html#flores">
+          <img id="imgFlores" src="static/img/imgsTienda/FloresTienda.png" class="card-img" alt="ArbustosTienda">
+        </a>
+  
+        <div class="text text-center"><h1 class="mt-3"><strong>MACETEROS</strong></h1></div>
+        <a id="linkMaceteros" href="productos.html#maceteros">
+          <img id="imgMaceteros" src="static/img/imgsTienda/maceterosTienda.png" class="card-img" alt="ArbustosTienda">
+        </a>
+      
+  
+        <div class="text text-center"><h1 class="mt-3"><strong>TIERRAS</strong></h1></div>
+        <a id="linkTierra" href="productos.html#tierraHojas">
+          <img id="imgTierra" src="static/img/imgsTienda/TierraDeHojasTienda.png" class="card-img" alt="ArbustosTienda">
+        </a>
+  
+        <div class="text text-center"><h1 class="mt-3"><strong>ARBUSTOS</strong></h1></div>
+        <a id="linkArbustos" href="productos.html#arbustos" id="arbustosCont">
+          <img id="imgArbustos" src="static/img/imgsTienda/ArbustosTienda.png" class="card-img" alt="ArbustosTienda">
+        </a>
+      </div>
+      
+    </section>
+    <!-- Fin Tienda -->
+  </body>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+<script src="{% static 'js/tienda.js' %}"></script>
+{% endblock %}

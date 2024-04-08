@@ -1,0 +1,68 @@
+
+/* Inicio Configuracion del carro de compras */
+
+
+.container{
+    
+    width: 85%;
+    margin: 0 auto;
+    padding: 12px 60px;
+    background-color: transparent;
+
+}
+
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th, td{
+    border: 1px solid #ccc;
+    padding: 10px;
+    
+}
+
+thead{
+    background-color: #5DBB63;
+    color: white;
+    font-weight: bold;
+}
+
+td:last-child{
+    text-align: center;
+}
+.editar{
+    background-color: #5DBB63;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.eliminar{
+    background-color: #E8494E;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+#contenedorAgregarProd{
+    border-radius: 15px;
+    box-shadow: 5px 20px 50px #000;
+}
+#buttonModificar{
+    align-items: end;
+    display: flex;
+    text-align: center;
+}
+
+small{
+    color: red;
+}
+/* Fin Configuracion del carro de compras */
