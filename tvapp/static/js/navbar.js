@@ -1,4 +1,6 @@
-const body = document.querySelector('body'),
+ carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+ body = document.querySelector('body'),
       sidebar = body.querySelector('nav'),
       toggle = body.querySelector(".toggle"),
       searchBtn = body.querySelector(".search-box"),
@@ -62,3 +64,17 @@ searchBtn.addEventListener("click", () => {
 product.addEventListener("click", () => {
     sidebar.classList.remove("close");
 });
+
+var cantidadActual = localStorage.getItem("carrito")
+
+console.log("este es el carro del Nav: " + carrito.length);
+
+var cantidadCarrito = document.getElementById("cantidadCarrito");
+
+// Mostrar la cantidad en el círculo
+if (cantidadActual) {
+    cantidadCarrito.innerText = carrito.length;
+    cantidadCarrito.style.display = "block"; // Mostrar el círculo solo si hay productos en el carrito
+} else {
+    cantidadCarrito.style.display = "none"; // Ocultar el círculo si no hay productos en el carrito
+}

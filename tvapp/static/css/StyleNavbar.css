@@ -440,3 +440,18 @@ color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#cantidadCarrito {
+    background-color: green; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    border-radius: 50%; /* Hace que el div sea circular */
+    width: 20px; /* Ancho del círculo */
+    height: 20px; /* Altura del círculo */
+    display: flex; /* Hace que el contenido esté centrado vertical y horizontalmente */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    position: absolute; /* Posicionamiento absoluto para colocarlo sobre el ícono del carrito */
+    top: -5px; /* Posicionamiento vertical */
+    right: -5px; /* Posicionamiento horizontal */
+    font-size: 12px; /* Tamaño de la fuente del número */
+    font-weight: bold; /* Texto en negrita */
+}
