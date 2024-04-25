@@ -13,6 +13,8 @@ function consumApi(){
         let name6 = document.getElementById("resultDolar6");
         let name7 = document.getElementById("resultDolar7");
         
+        
+
         /* Se le está insertando al h1 el valor del dolar y la información del clima */
         name.innerHTML += info.weather[0].main;
         name2.innerHTML += "<img src='https://openweathermap.org/img/wn/"+info.weather[0].icon+".png'>" + info.weather[0].description;
