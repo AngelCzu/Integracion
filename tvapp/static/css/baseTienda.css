@@ -662,21 +662,20 @@ padding-bottom: 10%;
 }
 
 
-.carrito{
-position: absolute;
-flex-direction: column;
-margin: 0.1%;
-align-items: center;
-text-align: center;
-width: calc(95% - 5px);
-background-color: var(--primary-color-light);
-transition: var(--tran-05);
-border-radius: 25px;
-box-shadow: 5px 20px 50px #000;
-z-index: 100000 !important;
-
+.carrito {
+  border: 1px solid #666;
+  width: auto; /* Cambiado a tamaño automático */
+  max-width: 80%; /* Ancho máximo para evitar que ocupe toda la pantalla */
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: .3s;
+  margin-right: 0;
+  opacity: 1;
 }
-
 
 #btnDropdown{
 align-items: center;
