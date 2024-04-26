@@ -551,7 +551,7 @@ color: rgba(25, 182, 255, 0.05);
 position: absolute;
 top: 50%;
 transform: translateY(-50%);
-z-index: 10000;
+z-index: 100;
 width: 100%;
 height: 220px;
 transition: 0.5s;
@@ -712,5 +712,46 @@ margin-left: 100%;
   transition: var(--tran-05);
   margin: 2%;
 }
+
+.carrito-flotante {
+  position: fixed;
+  top: 20px; /* Ajuste la posición superior */
+  right: 20px;
+  z-index: 1000 !important;
+}
+
+.carrito-boton {
+  background-color: rgb(6, 171, 22);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.carrito-boton i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#cantidadCarrito {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  font-size: 11px;
+}
+
+
 
 
