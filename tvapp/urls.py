@@ -11,8 +11,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('tienda',views.cargarTienda),
 
-    path('productos',views.cargarstore),
-    
+    path('productos', views.cargarstore, name='productos_por_categoria'),
     path('nosotros',views.cargarNosotros),
 
 

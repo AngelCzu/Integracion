@@ -15,6 +15,19 @@
 <!-- Inicio Tienda -->
 
 <section class="home">
+
+    <!-- -----------------------------------CARRITO-------------------------------------------------------- -->
+
+  <!-- Carrito de compras -->
+  <div id="carrito">
+    <h2>Carrito de Compras</h2>
+    <div id="productos">
+      <!-- Aquí se añadirán los productos -->
+    </div>
+    <hr>
+    <div id="total">Total: $0</div>
+  </div>
+
    
         <!-- Agregar el botón flotante del carrito -->
     <div id="carritoFlotante" class="carrito-flotante">
@@ -35,36 +48,7 @@
           <!-- MACETEROS -->
           <div id="maceteros" class="container text-center">
               <div class="row">
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-
-                              <div class="imgProducto">
-
-                                  <img class="img-fluid"
-                                      src="/static/img/imgsProductos/maceteros/Macetero Kenia - M15cm.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h3><strong><span class="nombre-producto">Macetero Amsterdam</span></strong>
-                                  </h3>
-                                  <h5><small>bordes curvos y colores naturales.</small></h5>
-                                  <p class="precio-item">
-                                      <i class="bi bi-currency-dollar"></i>27.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-
-                                  <p class="text codigoProdu">1001</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
+                  
                   {% for p in prod_maceteros %}
 
                   <div class="col-md-6">
@@ -75,8 +59,8 @@
                                     src="{{p.imagen.url}}">
                             </div>
                             <div class="contenidoCard">
-                                <h3><strong>{{p.nombre}}</strong></h3>
-                                <h5><small>Metal brillante e impecable.
+                                <h3 ><strong class="nombreprduc">{{p.nombre}}</strong></h3>
+                                <h5><small>{{p.descripcion}}
                                     </small></h5>
                                 <p class="price">
                                     <i class="bi bi-currency-dollar"></i>{{p.precio}}
@@ -86,8 +70,6 @@
                                 <p class="text codigoProdu">1006</p>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-light">Comprar</button>
-                                    <button type="button" class="btn btn-light"><i
-                                            class="bi bi-cart-plus-fill"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -108,159 +90,7 @@
           <!-- TIERRAS -->
           <div id="tierraHojas" class="container text-center">
               <div class="row">
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card  ms-5 m-4">
-
-                              <div class="imgProducto">
-
-                                  <img class="img-fluid" src="/static/img/imgsProductos/tierra/sustratoHuerto.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h3><strong>Sustrato Huerto</strong></h3>
-                                  <h5><small>Homogéneo y de gran pureza.</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>6.200
-                                  </p>
-                                  <div class="color">
-                                  </div>
-
-                                  <p class="text codigoProdu">2001</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/tierra/tierraAcida.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Tierra ácida</h2>
-                                  <h5><small>Sustratos orgánicos e insumos.</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>6.900
-                                  </p>
-
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">2002</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/tierra/tierraBiologica.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Tierra biológica</h2>
-                                  <h5><small>Compostación de residuos orgánicos</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>5.500
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">2003</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/tierra/tierradeHoja.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h3><strong>Tierra de Hojas</strong></h3>
-                                  <h5><small>Compostación de hojas y residuos.</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>4.700
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">2004</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/tierra/tierraMaceteros.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h3><strong>Tierra para maceteros</strong></h3>
-                                  <h5><small>Retención de agua y aireación.</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>8.900
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">2005</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/tierra/tierraTransplante.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h3><strong>Tierra de Transplante</strong></h3>
-                                  <h5><small>Homogénea y Libre de malezas.
-                                      </small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>6.400
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">2006</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                  
                   {% for p in prod_tierra %}
 
                   <div class="col-md-6">
@@ -272,7 +102,7 @@
                             </div>
                             <div class="contenidoCard">
                                 <h3><strong>{{p.nombre}}</strong></h3>
-                                <h5><small>Metal brillante e impecable.
+                                <h5><small>{{p.descripcion}}
                                     </small></h5>
                                 <p class="price">
                                     <i class="bi bi-currency-dollar"></i>{{p.precio}}
@@ -301,159 +131,7 @@
           <!-- FLORES -->
           <div id="flores" class="container text-center">
               <div class="row">
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card  ms-5 m-4">
-
-                              <div class="imgProducto">
-
-                                  <img class="img-fluid" src="/static/img/imgsProductos/flores/LiliumGrandotes.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Lilium Grandotes</h2>
-                                  <h5><small>Grandes y Fragantes</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>19.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-
-                                  <p class="text codigoProdu">3001</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/flores/pinkice.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Pink Ice</h2>
-                                  <h5><small>Colores frios y elegantes</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>70.000
-                                  </p>
-
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">3002</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/flores/RamoTonosAlegres.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Ramo Tonos Alegres</h2>
-                                  <h5><small>Vividas y colores alegres</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>35.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">3003</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/flores/TheDreamy.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h3><strong>The Dreamy</strong></h3>
-                                  <h5><small>Tonos Alegres y vividos</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>40.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">3004</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/flores/TheTiffany.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>The Tiffany</h2>
-                                  <h5><small>Purificadora y Resistente</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>55.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">3005</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid"
-                                      src="/static/img/imgsProductos/flores/ThistledRosasRomanticas.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Rosas Romanticas</h2>
-                                  <h5><small>Dulces rosas en aerosol pastel</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>40.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">3006</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                  
 
                   {% for p in prod_flores %}
 
@@ -466,7 +144,7 @@
                             </div>
                             <div class="contenidoCard">
                                 <h3><strong>{{p.nombre}}</strong></h3>
-                                <h5><small>Metal brillante e impecable.
+                                <h5><small>{{p.descripcion}}
                                     </small></h5>
                                 <p class="price">
                                     <i class="bi bi-currency-dollar"></i>{{p.precio}}
@@ -496,162 +174,7 @@
           <!-- ARBUSTOS -->
           <div id="arbustos" class="container text-center">
               <div class="row">
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card  ms-5 m-4">
-
-                              <div class="imgProducto">
-
-                                  <img class="img-fluid" src="/static/img/imgsProductos/arbustos/avedelParaiso.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Avedel Paraíso</h2>
-                                  <h5><small>Decorativa y Resistente</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>33.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-
-                                  <p class="text codigoProdu">4001</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/arbustos/calatheaMidallon.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Calathea Midallon</h2>
-                                  <h5><small>Regula la humedad</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>28.000
-                                  </p>
-
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">4002</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/arbustos/draceraLimon.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Dracera Limon</h2>
-                                  <h5><small>Curativa y fácil de cuidar</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>57.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">4003</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/arbustos/monsteraDeliciosa.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h3><strong>Monstera Deliciosa</strong></h3>
-                                  <h5><small>Se adapta a cualquier ambiente</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>29.000
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">4004</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/arbustos/Pachira.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Pachira</h2>
-                                  <h5><small>Purificadora y Resistente</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>33.000
-                                      
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">4005</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="col-md-6">
-                      <div class="contenedorP">
-                          <div class="card ms-5 m-4">
-                              <div class="imgProducto">
-                                  <img class="img-fluid" src="/static/img/imgsProductos/arbustos/palmaKentia.png">
-                              </div>
-                              <div class="contenidoCard">
-                                  <h2>Palma Kentia</h2>
-                                  <h5><small>Tropical y purificadora</small></h5>
-                                  <p class="price">
-                                      <i class="bi bi-currency-dollar"></i>49.000
-                                      <p>stock:<span id="cantidadProductos"></span></p>
-                                      
-
-                                  </p>
-                                  <div class="color">
-                                  </div>
-                                  <p class="text codigoProdu">4006</p>
-                                  <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-light">Comprar</button>
-                                      <button type="button" class="btn btn-light"><i
-                                              class="bi bi-cart-plus-fill"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                  
                   {% for p in prod_arbustos %}
 
                   <div class="col-md-6">
@@ -663,7 +186,7 @@
                             </div>
                             <div class="contenidoCard">
                                 <h3><strong>{{p.nombre}}</strong></h3>
-                                <h5><small>Metal brillante e impecable.
+                                <h5><small>{{p.descripcion}}
                                     <p>{{p.stock}}</p>
                                     </small></h5>
                                     
@@ -692,23 +215,7 @@
   </div>
 
 
-  <!-- -----------------------------------CARRITO-------------------------------------------------------- -->
-
- <div class="carrito" id="carrito" style="display: none;">
-    <div class="header-carrito">
-        <h2>Tu Carrito</h2>
-    </div>
-    <div class="carrito-items">
-        <!-- Aquí van los elementos del carrito -->
-    </div>
-    <div class="carrito-total">
-        <div class="fila">
-            <strong>Total:</strong>
-            <span id="total">$0.00</span>
-        </div>
-    </div>
-</div>
-
+  
 </section>
 <!-- Fin Tienda -->
 {% endblock %}

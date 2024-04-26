@@ -46,7 +46,7 @@ const arrayTienda = [
 
 
 
-function actualizarCantidadProductos() {
+/* function actualizarCantidadProductos() {
   
   var cantidadProductos = carrito.reduce(function(total, producto) {
     return (total - producto.cantidad >= 0) ? total - producto.cantidad : 0;
@@ -58,7 +58,7 @@ function actualizarCantidadProductos() {
 
 document.addEventListener('DOMContentLoaded', function() {
   actualizarCantidadProductos();
-});
+}); */
 
 
 
@@ -75,7 +75,7 @@ if(document.readyState == 'loading'){
 
 function ready(){
     
-    if (carrito != []) {
+    /* if (carrito != []) {
         carrito.forEach((product) => {
             agregarItemAlCarrito(product.nombre, product.precio, product.imagen);
             hacerVisibleCarrito();
@@ -99,7 +99,7 @@ function ready(){
     for(var i=0;i<botonesRestarCantidad.length; i++){
         var button = botonesRestarCantidad[i];
         button.addEventListener('click',restarCantidad);
-    }
+    } */
 
     //Agregamos funcionalidad al boton Agregar al carrito
     var btnAgregarCarrito = document.getElementsByClassName('btn-light');
@@ -108,8 +108,8 @@ function ready(){
     button.addEventListener('click', agregarAlCarritoClicked);
     }
     
-
-    //Agregamos funcionalidad al botón comprar
+  }
+ /*    //Agregamos funcionalidad al botón comprar
     document.getElementsByClassName('btn-pagar')[0].addEventListener('click',pagarClicked)
 }
 //Eliminamos todos los elementos del carrito y lo ocultamos
@@ -122,7 +122,7 @@ function pagarClicked(){
     }
     actualizarTotalCarrito();
     ocultarCarrito();
-}
+} */
 //Funciòn que controla el boton clickeado de agregar al carrito
 function agregarAlCarritoClicked(event){
     
@@ -133,8 +133,13 @@ function agregarAlCarritoClicked(event){
     var button = event.target;
     var btnGroup = button.parentElement;
     var item = btnGroup.parentElement;
+    var card = item.parentElement;
     var idAgregar = parseInt(item.getElementsByClassName('codigoProdu')[0].innerText);
-    let filtro = arrayTienda.filter(e => e.id == [idAgregar]);
+    var NombreAgregar = (card.getElementsByClassName('nombreprduc')[0].innerText);
+    console.log("nombre: "+NombreAgregar);
+    console.log("id"+idAgregar);
+}
+/*     let filtro = arrayTienda.filter(e => e.id == [idAgregar]);
     for (const i of filtro) {
         var stock = i.stock
         var nombreAgregar = i.nombre;
@@ -268,7 +273,7 @@ function restarCantidad(event){
         selector.getElementsByClassName('carrito-item-cantidad')[0].value = cantidadActual;
         actualizarTotalCarrito();
     }
-}*/
+} 
 
 function actualizarLocalStorageCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -465,6 +470,6 @@ function actualizarTotalCarrito(){
 
     document.getElementsByClassName('carrito-precio-total')[0].innerText = '$'+total.toLocaleString("es") + ",00";
 
-}
+} */
 
 

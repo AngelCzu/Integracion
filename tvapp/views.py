@@ -55,15 +55,25 @@ def cargarTienda(request):
     return render(request,"tienda.html")
 
 def cargarstore(request):
-    productos = Producto.objects.all()
-    
-    prod_flores = Producto.objects.filter(categoria_id=4)
-    prod_maceteros = Producto.objects.filter(categoria_id=5)
-    prod_arbustos = Producto.objects.filter(categoria_id=7)
-    prod_tierra = Producto.objects.filter(categoria_id=6)
-    return render(request,"productos.html", {"prod":productos, 
-                                             "prod_flores":prod_flores,"prod_maceteros":prod_maceteros,
-                                             "prod_arbustos":prod_arbustos,"prod_tierra":prod_tierra})
+    prod_maceteros = Producto.objects.filter(categoria_id=1)
+
+    # Obtener productos de la categoría Tierra de Hojas
+    prod_tierra = Producto.objects.filter(categoria_id=2)
+
+    # Obtener productos de la categoría Flores
+    prod_flores = Producto.objects.filter(categoria_id=3)
+
+    # Obtener productos de la categoría Arbustos
+    prod_arbustos = Producto.objects.filter(categoria_id=4)
+
+    # Renderizar la plantilla HTML y pasar los productos filtrados como contexto
+    return render(request, 'productos.html', {
+        'prod_maceteros': prod_maceteros,
+        'prod_tierra': prod_tierra,
+        'prod_flores': prod_flores,
+        'prod_arbustos': prod_arbustos,
+    })
+
 
 
 def cargarInicio(request):
