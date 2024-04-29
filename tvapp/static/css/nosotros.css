@@ -2,10 +2,7 @@
     height: 400px;
 }
 
-.container-fluid img{
-    height: 90px;
-    width: 200px;
-}
+
 
 .d-img{
     height: 100%;
@@ -13,53 +10,3 @@
     filter: brightness(0.6);
 }
 
-.logo{
-    border-radius: 30px;
-}
-
-.btn{
-    color:rgb(252, 255, 252) ;
-    background-color: rgb(61, 19, 202);
-    border-color:rgb(7, 9, 121) ;
-    
-}
-
-.nav-link:hover{
-    color: rgba(59, 13, 200, 0.29);
-}
-
-/*MAPA*/
-.container-clock{
-  color: black;
-  padding-right: 100px;
-  
-}
-/* dark mode */
-
-
-
-#toggle{
-    display: none;
-  }
-  
-  #label_toggle{
-    padding-right: 60px;
-    font-size: 2em;
-    color:rebeccapurple;
-    cursor:pointer
-  }
-  
-  
-  .dark{color: var(--text-color);}
-  
-  .dark .nav-link{
-    padding-right:  30px;
-    color: white;
-  }
-  
-  
-  .dark .container-clock{
-    color: white;
-  }
-  
-  

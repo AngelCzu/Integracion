@@ -335,6 +335,10 @@ body.dark .home .text{
     color: var(--text-color);
 }
 
+.dark{
+    color: var(--text-color);
+}
+
 
 #plant{
     height: 50px;
