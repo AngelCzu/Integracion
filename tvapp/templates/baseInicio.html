@@ -70,39 +70,35 @@
                         <i id="icon" class="bi bi-box-seam"></i>
                         <span class="text nav-text">Productos</span></box-icon>
                     </a>
-                    <ul id="dropNavbar" class="text dropdown-menu">
+                    <ul id="dropNavbar" class="text dropdown-menu" style="background-color: var(--body-color);">
                         <li><a class="dropdown-item" href="/productos#maceteros">Maceteros</a></li>
                         <li><a class="dropdown-item" href="/productos#tierra">Tierra de Hojas</a></li>
                         <li><a class="dropdown-item" href="/productos#flores">Flores</a></li>
                         <li><a class="dropdown-item" href="/productos#arbustos">Arbustos</a></li>
                     </ul>
                 </li>
-                {% if user.is_authenticated %}  
-                <li class="nav-item">
-                    <a href="/admins">
-                        <i id="icon" class="bi bi-shield"></i>
-                        <span class="text nav-text">Administración</span>
-                    </a>
-                </li>
-                {% endif %}
 
+                
 
+                
 
             </div>
+            
 
             <div class="bottom-content">
-                <li id="dropdown" class="nav-item dropdown">
-                            {% if user.is_authenticated %}   
+                   
+                <li id="logout" class="nav-item dropdown">
+                    {% if user.is_authenticated %}
                             <a class="nav-link dropdown- btn btn-outline-dark" id="TextNavbarIcons" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false"><i id="icon" class="bi bi-person"></i>{{user.username}}</a>
                             {% else %}  
                             
                                 <a href="{% url 'login_registro' %}"><i id="icon" class="bi bi-person"></i>Iniciar sesion</a>
                             {% endif %}
-                    <ul id="dropNavbar" class="text dropdown-menu">
+                    <ul id="dropNavbar" class="text dropdown-menu" style="background-color: var(--body-color);">
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button class="dropdown-item" type="submit" name="logout">Cerrar sesion</button>
+                            <li><button class="dropdown-item" type="submit" name="logout">Cerrar sesion</button></li>
                         </form>
                     </ul>
                 </li>

@@ -5,6 +5,7 @@
       toggle = body.querySelector(".toggle"),
       searchBtn = body.querySelector(".search-box"),
       product = body.querySelector("#dropdown"),
+      logout = body.querySelector("#logout"),
       modeSwitch = body.querySelector(".toggle-switch"),
       modeText = document.querySelector(".mode-text");
 
@@ -62,6 +63,10 @@ searchBtn.addEventListener("click", () => {
 });
 
 product.addEventListener("click", () => {
+    sidebar.classList.remove("close");
+});
+
+logout.addEventListener("click", () => {
     sidebar.classList.remove("close");
 });
 
