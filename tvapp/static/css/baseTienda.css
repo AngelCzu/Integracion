@@ -8,26 +8,17 @@ img {
   box-shadow: 5px 20px 50px #000;
 }
 
-
 /* Contenedores específicos */
 .contenedorP {
-  align-items: center;
   display: flex;
   padding-left: 50px;
-}
-
-.contenedorMaceteros,
-.contenedorTierras,
-.contenedorFlores,
-.contenedorArbustos {
-  padding-top: 10%;
-  padding-bottom: 10%;
 }
 
 /* Estilos de las tarjetas */
 .contenedorP .card {
   position: relative;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 550px;
   background: #232323;
   color: white;
@@ -49,16 +40,6 @@ img {
 
 .contenedorP .card:hover:before {
   clip-path: circle(300px at 80% -20%);
-}
-
-.contenedorP .card:after {
-  position: absolute;
-  top: 30%;
-  left: -20%;
-  font-size: 12em;
-  font-weight: 800;
-  font-style: italic;
-  color: rgba(25, 182, 255, 0.05);
 }
 
 .contenedorP .card .imgProducto {
@@ -98,8 +79,6 @@ img {
   height: 270px;
 }
 
-
-
 .contenedorP .card .contenidoCard .size,
 .contenedorP .card .contenidoCard .color {
   display: flex;
@@ -124,6 +103,3 @@ img {
   visibility: visible;
   transition-delay: 0.6s;
 }
-
-
-
