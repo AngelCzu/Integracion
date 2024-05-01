@@ -16,9 +16,7 @@ img {
 /* Contenedores específicos */
 .contenedorP {
   flex: 1;
-  display: flex;
-  justify-content: center; /* Centra las tarjetas horizontalmente */
-  align-items: center;
+  display: contents;
   padding: 20px;
 }
 
@@ -112,10 +110,12 @@ img {
   transition-delay: 0.6s;
 }
 
+.row {
+  width: 100%;
+  
+}
 
 .col {
-  width: 300px;
-  justify-content: start;
-  display: flex;
-  position: initial;
+  min-width: 300px;
+  max-width: 300px;
 }
