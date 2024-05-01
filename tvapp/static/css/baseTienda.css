@@ -8,16 +8,8 @@ img {
   box-shadow: 5px 20px 50px #000;
 }
 
-#parrafoCod {
-  color: gray;
-}
 
 /* Contenedores específicos */
-.container {
-  align-items: center;
-  display: flex;
-}
-
 .contenedorP {
   align-items: center;
   display: flex;
@@ -106,13 +98,7 @@ img {
   height: 270px;
 }
 
-.contenedorP .card .contenidoCard h2 {
-  position: relative;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: #fff;
-  margin: 0;
-}
+
 
 .contenedorP .card .contenidoCard .size,
 .contenedorP .card .contenidoCard .color {
@@ -139,119 +125,5 @@ img {
   transition-delay: 0.6s;
 }
 
-.contenedorP .card .contenidoCard a {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #fff;
-  border-radius: 4px;
-  margin-top: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  color: #111;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 0.5s;
-  margin-top: 0;
-}
 
-.contenedorP .card:hover .contenidoCard a {
-  opacity: 1;
-  transform: translateY(0px);
-  transition-delay: 0.75s;
-}
 
-/* Estilos del carrito */
-.carrito {
-  border: 1px solid #666;
-  width: auto;
-  max-width: 80%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9999;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: .3s;
-  margin-right: 0;
-  opacity: 1;
-}
-
-#btnDropdown {
-  align-items: center;
-  text-align: center;
-  position: absolute;
-  margin-left: 100%;
-}
-
-.carrito-flotante {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000 !important;
-}
-
-.carrito-boton {
-  background-color: rgb(6, 171, 22);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  cursor: pointer;
-  position: relative;
-}
-
-.carrito-boton i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#cantidadCarrito {
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  position: absolute;
-  top: -1px;
-  right: -1px;
-  font-size: 11px;
-}
-
-/* Estilos del offcanvas */
-.offcanvas-body {
-  flex-direction: column;
-  background-color: var(--primary-color-light);
-  transition: var(--tran-05);
-}
-
-.offcanvas-header {
-  background-color: var(--primary-color-light);
-  color: var(--text-color);
-  transition: var(--tran-05);
-}
-
-.btn-close {
-  background-color: var(--primary-color-light);
-  transition: var(--tran-05);
-}
-
-.modal-content {
-  color: var(--text-color);
-  transition: var(--tran-05);
-  justify-content: center;
-}
-
-.total-content {
-  color: var(--text-color);
-  transition: var(--tran-05);
-  margin: 2%;
-}
-
-.row {
-  width: 100%;
-}
