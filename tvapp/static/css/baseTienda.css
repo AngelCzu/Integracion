@@ -1,3 +1,8 @@
+
+
+
+
+
 /* Estilos generales */
 img {
   border-radius: 75%;
@@ -10,8 +15,11 @@ img {
 
 /* Contenedores específicos */
 .contenedorP {
+  flex: 1;
   display: flex;
-  padding-left: 50px;
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  align-items: center;
+  padding: 20px;
 }
 
 /* Estilos de las tarjetas */
@@ -102,4 +110,12 @@ img {
   opacity: 1;
   visibility: visible;
   transition-delay: 0.6s;
+}
+
+
+.col {
+  width: 300px;
+  justify-content: start;
+  display: flex;
+  position: initial;
 }

@@ -41,7 +41,8 @@
                   {% for p in prod_maceteros %}
 
                   <div class="col">
-                    <div class="contenedorP">
+                    <div class="contenedorP" style="
+                    min-width: 400px;  max-width: 400px;">
                         <div class="card ms-5 m-4">
                             <div class="imgProducto">
                                 <img class="img-fluid"
@@ -56,7 +57,7 @@
                                 </p>
                                 <div class="color">
                                 </div>
-                                <p class="text codigoProdu">1006</p>
+                                <p class="text codigoProdu">{{p.sku}}</p>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-light">Comprar</button>
                                 </div>
@@ -82,8 +83,9 @@
                   
                   {% for p in prod_tierra %}
 
-                  <div class="col">
-                    <div class="contenedorP">
+                  <div class="col" style="width: 300px">
+                    <div class="contenedorP" style="
+                    min-width: 400px;  max-width: 400px;">
                         <div class="card ms-5 m-4">
                             <div class="imgProducto">
                                 <img class="img-fluid"
@@ -98,7 +100,7 @@
                                 </p>
                                 <div class="color">
                                 </div>
-                                <p class="text codigoProdu">1006</p>
+                                <p class="text codigoProdu">{{p.sku}}</p>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-light">Comprar</button>
                                     <button type="button" class="btn btn-light"><i
@@ -124,8 +126,9 @@
 
                   {% for p in prod_flores %}
 
-                  <div class="col">
-                    <div class="contenedorP">
+                  <div class="col" style="width: 300px">
+                    <div class="contenedorP" style="
+                    min-width: 400px;  max-width: 400px;">
                         <div class="card ms-5 m-4">
                             <div class="imgProducto">
                                 <img class="img-fluid"
@@ -140,7 +143,7 @@
                                 </p>
                                 <div class="color">
                                 </div>
-                                <p class="text codigoProdu">1006</p>
+                                <p class="text codigoProdu">{{p.sku}}</p>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-light">Comprar</button>
                                     <button type="button" class="btn btn-light"><i
@@ -166,8 +169,8 @@
                   
                   {% for p in prod_arbustos %}
 
-                  <div class="col">
-                    <div class="contenedorP">
+                  <div class="col" style="width: 300px">
+                    <div class="contenedorP" >
                         <div class="card ms-5 m-4">
                             <div class="imgProducto">
                                 <img class="img-fluid" height="100px"
@@ -185,7 +188,7 @@
                                 </p>
                                 <div class="color">
                                 </div>
-                                <p class="text codigoProdu">1006</p>
+                                <p class="text codigoProdu">{{p.sku}}</p>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-light">Comprar</button>
                                     <button type="button" class="btn btn-light"><i
