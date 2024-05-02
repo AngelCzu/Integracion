@@ -205,7 +205,10 @@ body.dark .sidebar header .toggle{
     transition: var(--tran-03);
 }
 
-
+.btn.show{
+    background-color:  rgb(6, 171, 22);
+    --text-color: var(--sidebar-color);
+}
 
 .sidebar li a:hover{
     background-color: rgb(6, 171, 22);
@@ -457,4 +460,3 @@ color: white;
     font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif;
 }
-
