@@ -9,23 +9,10 @@ urlpatterns = [
     path('login_registro', views.login_registro, name='login_registro'),
     path('inicio', views.inicio, name='inicio'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('tienda',views.cargarTienda),
+    
 
     path('productos', views.cargarstore, name='productos_por_categoria'),
     path('nosotros',views.cargarNosotros),
-
-
-    #carga de la pagna
-    path('admins',views.cargarAdmin),
-    #Funcion
-    path('agregarProductoForm', views.agregarProducto),
-
-    #carga de la pagna
-    path('editarProd/<sku>',views.cargarEditarProducto),
-    #funcion
-    path('editarProdform',views.editarProd),
-
-    #funcion
-    path('eliminarProd/<sku>',views.eliminarProducto),
+    path('comprar/<int:sku>/', views.comprar_producto, name='comprar_producto'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

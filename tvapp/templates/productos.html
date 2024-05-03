@@ -41,8 +41,7 @@
                   {% for p in prod_maceteros %}
 
                   <div class="col">
-                    <div class="contenedorP" style="
-                    min-width: 400px;  max-width: 400px;">
+                    <div class="contenedorP" >
                         <div class="card ms-5 m-4">
                             <div class="imgProducto">
                                 <img class="img-fluid"
@@ -59,7 +58,10 @@
                                 </div>
                                 <p class="text codigoProdu">{{p.sku}}</p>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-light">Comprar</button>
+                                    <form method="post" action="{% url 'comprar_producto' p.sku %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-light">Comprar</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -50,3 +50,10 @@ class Usuarios(models.Model):
         txt = "User: {0} | Usuario: {1} | Correo: {2} | Contraseña: {3} | Fecha: {4}"
         return txt.format(self.id_tipoUser,self.nombreUsuario,self.correo,self.password,self.fechaCreacion)
 
+class Compra(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    fecha_compra = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Compra de {self.producto.nombre} por {self.usuario.username} el {self.fecha_compra}'
