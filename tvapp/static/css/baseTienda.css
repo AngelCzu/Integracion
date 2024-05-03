@@ -78,7 +78,7 @@ img {
   height: 100px;
   text-align: center;
   transition: 0.5s;
-  z-index: 10;
+  
 }
 
 .contenedorP .card:hover .contenidoCard {

@@ -78,7 +78,30 @@
   transition: var(--tran-05);
 }
 
+.modal-header{
+  border-color: var(--body-color);
+}
+
+.modal-footer{
+  border-color: var(--body-color);
+}
+
+.btn-close{
+  background-color: var(--toggle-color);
+
+}
+
+.btn-light-modal{
+  background-color: rgb(6, 171, 22);
+}
+
+.btn-light-modal:hover{
+  
+  background-color: rgb(8, 128, 20);
+}
+
 .modal-content {
+  background-color: var(--body-color);
   color: var(--text-color);
   transition: var(--tran-05);
   justify-content: center;
@@ -89,4 +112,5 @@
   transition: var(--tran-05);
   margin: 2%;
 }
+
 

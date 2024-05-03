@@ -57,12 +57,35 @@
                                 <div class="color">
                                 </div>
                                 <p class="text codigoProdu">{{p.sku}}</p>
-                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    {% if user.is_authenticated %}
                                     <form method="post" action="{% url 'comprar_producto' p.sku %}">
                                         {% csrf_token %}
                                         <button type="submit" class="btn btn-light">Comprar</button>
                                     </form>
-                                </div>
+
+                                    {% else %}  
+                                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Comprar
+                                      </button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">¡Debe registrarse para comprar!</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              Para realizar una compra, por favor regístrese en nuestro sitio.
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                              <a href="{% url 'login_registro' %}" class="btn btn-light-modal">Registrarse</a>  
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      {% endif %}
+                                
                             </div>
                         </div>
                     </div>
@@ -216,10 +239,17 @@
 
 {% block script %}
 <script>
-    function refreshPage() {
-      location.reload(); // Recarga la página actual
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+        var cantidadCompras = {{ cantidad_compras }};
+        var cantidadCarrito = document.getElementById("cantidadCarrito");
+        
+        if (cantidadCompras > 0) {
+            cantidadCarrito.style.display = "block";
+            cantidadCarrito.textContent = cantidadCompras;
+        } else {
+            cantidadCarrito.style.display = "none";
+        }
+    });
   </script>
-    <script src="{% static 'js/productos.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
 {% endblock %}

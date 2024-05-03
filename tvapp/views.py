@@ -1,18 +1,14 @@
-from datetime import timezone
-import os
-import time
-from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.core.mail import send_mail
-from django.conf import settings 
+
 
 from django.contrib import messages
-from django.views.decorators.csrf import csrf_exempt
+
+
 
 
 
@@ -52,6 +48,10 @@ def login_registro(request):
     
 
 def cargarstore(request):
+    if request.user.is_authenticated:
+        usuario_actual = request.user
+    else:
+        usuario_actual = None
     prod_maceteros = Producto.objects.filter(categoria_id=1)
 
     # Obtener productos de la categoría Tierra de Hojas
@@ -62,6 +62,7 @@ def cargarstore(request):
 
     # Obtener productos de la categoría Arbustos
     prod_arbustos = Producto.objects.filter(categoria_id=4)
+    cantidad_compras = Compra.objects.filter(usuario=usuario_actual).count()
 
     # Renderizar la plantilla HTML y pasar los productos filtrados como contexto
     return render(request, 'productos.html', {
@@ -69,6 +70,7 @@ def cargarstore(request):
         'prod_tierra': prod_tierra,
         'prod_flores': prod_flores,
         'prod_arbustos': prod_arbustos,
+        'cantidad_compras': cantidad_compras, 
     })
 
 
@@ -79,12 +81,11 @@ def comprar_producto(request, sku):
         usuario = request.user
         compra = Compra.objects.create(usuario=usuario, producto=producto)
         # Aquí puedes realizar cualquier otra lógica relacionada con la compra, como actualizar el stock del producto, enviar confirmaciones por correo electrónico, etc.
-        messages.success(request, '¡Compra realizada con éxito!')
-        return redirect('cargarstore')
+        
+        return redirect('/productos')
     else:
         messages.error(request, 'Error al procesar la compra.')
-        return redirect('cargarstore')
-
+        return redirect('/productos')
 
 
 def cargarInicio(request):
@@ -102,3 +103,4 @@ def logout_view(request):
         # Si se envía una solicitud POST con el nombre 'logout', entonces realiza el logout.
         logout(request)
         return redirect('inicio')   
+
