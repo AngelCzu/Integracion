@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'css/styleCarro.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Flores</title>
+<title>Tienda</title>
 {% endblock %}
 
 
@@ -20,11 +20,14 @@
    
         <!-- Agregar el botón flotante del carrito -->
     <div id="carritoFlotante" class="carrito-flotante">
-        <button id="carritoBoton" class="carrito-boton">
-            <i class="bi bi-cart"></i>
-            <span id="cantidadCarrito" class="badge">0</span> <!-- Aquí se mostrará la cantidad en un círculo -->
-        </button>
+        <a href="compras"> <!-- Aquí colocas la URL de la página a la que quieres redirigir -->
+            <button id="carritoBoton" class="carrito-boton">
+                <i class="bi bi-cart"></i>
+                <span id="cantidadCarrito" class="badge">0</span> <!-- Aquí se mostrará la cantidad en un círculo -->
+            </button>
+        </a>
     </div>
+    
 
 
   <div id="contenedor-items" class="contenedor-items">

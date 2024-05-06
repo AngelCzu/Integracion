@@ -104,3 +104,16 @@ def logout_view(request):
         logout(request)
         return redirect('inicio')   
 
+
+@login_required
+def compras(request):
+    # Obtener todos los productos del usuario actual
+    compras_usuario = Compra.objects.filter(usuario=request.user)
+
+    # Obtener los SKU de todos los productos comprados por el usuario
+    skus_productos = [compra.producto.sku for compra in compras_usuario]
+
+    # Obtener todos los productos asociados a los SKUs obtenidos
+    productos_usuario = Producto.objects.filter(sku__in=skus_productos)
+
+    return render(request, 'compras.html', {'productos_usuario': productos_usuario})

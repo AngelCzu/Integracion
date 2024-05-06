@@ -1,0 +1,54 @@
+{% extends "./baseInicio.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+<title>Compras</title>
+{% endblock %}
+
+
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    Productos del Usuario
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <!-- Agregar más columnas si es necesario -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for producto in productos_usuario %}
+                            <tr>
+                                <td>{{ producto.descripcion }}</td>
+                                <td>{{ producto.descripcion }}</td>
+                                <td>{{ producto.precio }}</td>
+                                <!-- Agregar más columnas si es necesario -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+{% block script %}
+
+
+{% endblock %}
