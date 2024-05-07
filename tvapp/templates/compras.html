@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+<link rel="stylesheet" href="{% static 'css/compras.css' %}">
 <title>Compras</title>
 {% endblock %}
 
@@ -21,18 +21,32 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Imagen</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Precio</th>
+                                <th>Cantidad</th>
                                 <!-- Agregar más columnas si es necesario -->
                             </tr>
                         </thead>
                         <tbody>
                             {% for producto in productos_usuario %}
                             <tr>
-                                <td>{{ producto.descripcion }}</td>
+                                <td>
+                                    <img class="img-fluid" 
+                                    src="{{producto.imagen.url}}">
+                                </td>
+                                <td>{{ producto.nombre }}</td>
                                 <td>{{ producto.descripcion }}</td>
                                 <td>{{ producto.precio }}</td>
+                                
+                                <td>{{ producto.cantidad }}
+                                    <form method="post" action="{% url 'sumar_producto' producto.sku %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-light">Comprar</button>
+                                    </form>
+                                </td>
+                                
                                 <!-- Agregar más columnas si es necesario -->
                             </tr>
                             {% endfor %}

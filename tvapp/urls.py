@@ -14,6 +14,8 @@ urlpatterns = [
     path('productos', views.cargarstore, name='productos_por_categoria'),
     path('nosotros',views.cargarNosotros),
     path('comprar/<int:sku>/', views.comprar_producto, name='comprar_producto'),
+    
     path('compras', views.compras, name='compras'),
+    path('sumar/<int:sku>/', views.sumar_producto, name='sumar_producto'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
