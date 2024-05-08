@@ -1,3 +1,19 @@
 .img-fluid{
     height: 70px
 }
+
+#btn-producto {
+    background-color: rgb(8, 128, 20);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 0px; /* Cambia el tamaño del botón */
+    height: 25px; /* Cambia el tamaño del botón */
+    font-size: 20px; /* Cambia el tamaño del icono */        display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+#btn-producto:hover {
+    background-color: #067c15; /* Cambia el color al pasar el cursor sobre el botón */
+}
