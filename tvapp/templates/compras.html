@@ -16,43 +16,46 @@
                     Productos del Usuario
                 </div>
                 <div class="card-body">
-                    <table class="table-borderless">
+                    <table class="table table-borderless">
                         <thead>
-                          <tr>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Precio</th>
-                            <th class="align-middle"scope="col">Cantidad</th>
-                          </tr>
+                            <tr>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th class="align-middle" scope="col">Cantidad</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {% for producto in productos_usuario %}
-                                <tr>
-                                    <td style="width: 100px;">
-                                        <img class="img-fluid" src="{{producto.imagen.url}}">
-                                    </td>
-                                    <td style="width: 270px;" class="align-middle">{{ producto.nombre }}</td> <!-- Agrega la clase align-middle para centrar verticalmente el texto -->
-                                    <td style="width: 80px;" class="align-middle">{{ producto.precio }}</td> <!-- Agrega la clase align-middle para centrar verticalmente el texto -->
-                                    
-                                    <td class="align-middle" style=" width: 120px; height: 100px; display: flex; justify-content: space-between; align-items: center;">
+                            <tr>
+                                <td style="width: 100px;">
+                                    <img class="img-fluid" src="{{ producto.imagen.url }}">
+                                </td>
+                                <td style="width: 270px;" class="align-middle">{{ producto.nombre }}</td>
+                                <td style="width: 80px;" class="align-middle">{{ producto.precio }}</td>
+                                <td class="align-middle" style="width: 120px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                                         <form method="post" action="{% url 'sumar_producto' producto.sku %}" style="margin-right: 5px;">
                                             {% csrf_token %}
                                             <button id="btn-restar" type="submit" class="btn bi bi-dash" style="padding: 5px;"></button>
                                         </form>
-                                        <span>{{ producto.cantidad }}</span>
+                                        <span style="width: 30px;">{{ producto.cantidad }}</span>
                                         <form method="post" action="{% url 'sumar_producto' producto.sku %}" style="margin-left: 5px;">
                                             {% csrf_token %}
                                             <button id="btn-sumar" type="submit" class="btn bi bi-plus" style="padding: 5px;"></button>
                                         </form>
-                                    </td>
-                                    
-                                    <!-- Agregar más columnas si es necesario -->
-                                </tr>
-                                {% endfor %}
-                          <tr>
-                    </table>    
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 {% endblock %}
 
 {% block script %}
