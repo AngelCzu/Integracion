@@ -245,3 +245,14 @@ img{
   border: none;
   box-shadow: 5px 20px 50px #000;
 }
+
+.contenedorP .card .nombreprduc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.contenedorP .card:hover .nombreprduc {
+  white-space: normal;
+}
