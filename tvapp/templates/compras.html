@@ -69,6 +69,34 @@
 </div>
 {% endif %}
 
+<div id="maceteros" class="contenedor text-center">
+        {% for p in productos_aleatorios %}
+          <div class="contenedorP" >
+              <div class="card m-1">
+                  <div class="imgProducto">
+                      <img class="img-fluid"
+                          src="{{p.imagen.url}}">
+                  </div>
+                  <div class="contenidoCard">
+                      <h3 ><strong class="nombreprduc">{{p.nombre}}</strong></h3>
+                      <h5><small>{{p.descripcion}}
+                          </small></h5>
+                      <p class="price">
+                          <i class="bi bi-currency-dollar"></i>{{p.precio}}
+                      </p>
+                      <div class="color">
+                      </div>
+                        <form method="post" action="{% url 'comprar_producto_compras' p.sku %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-light">Comprar</button>
+                        </form>
+                  </div>
+              </div>
+          </div>
+              {% endfor %}
+</div>
+
+
 {% endblock %}
 
 {% block script %}

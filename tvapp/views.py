@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+import random
 from django.db.models import Sum
 from django.http import JsonResponse
 from transbank.webpay.webpay_plus.transaction import Transaction
@@ -138,9 +138,19 @@ def compras(request):
     # Calcular el precio total de los productos
     total_precio = sum(producto.precio * producto.cantidad for producto in productos_usuario)
 
+    # Obtener las categorías de los productos comprados por el usuario
+    categorias_carrito = [producto.categoria_id.id_categoria for producto in productos_usuario]
+
+    # Obtener productos de las mismas categorías que el usuario ha comprado, excluyendo los productos que ya ha comprado
+    productos_categoria_carrito = Producto.objects.filter(categoria_id__in=categorias_carrito).exclude(sku__in=skus_productos)
+
+    # Obtener hasta 4 productos aleatorios de las categorías del carrito del usuario
+    productos_aleatorios = random.sample(list(productos_categoria_carrito), min(4, len(productos_categoria_carrito)))
+
     return render(request, 'compras.html', {'productos_usuario': productos_usuario,
                                             'total': compras_totales,
-                                            'total_precio': total_precio})
+                                            'total_precio': total_precio,
+                                            'productos_aleatorios': productos_aleatorios})
 
 
 @login_required
@@ -155,7 +165,8 @@ def sumar_producto(request, sku):
     else:
         messages.error(request, 'Error al procesar la compra.')
         return redirect('/compras')
-    
+
+@login_required    
 def restar_producto(request, sku):
     if request.method == 'POST':
         producto = get_object_or_404(Producto, sku=sku)
@@ -179,7 +190,19 @@ def restar_producto(request, sku):
     else:
         messages.error(request, 'Error al procesar la compra.')
         return redirect('/compras')
-    
+
+@login_required
+def comprar_producto_compras(request, sku):
+    if request.method == 'POST':
+        producto = get_object_or_404(Producto, sku=sku)
+        usuario = request.user
+        compra = Compra.objects.create(usuario=usuario, producto=producto)
+        # Aquí puedes realizar cualquier otra lógica relacionada con la compra, como actualizar el stock del producto, enviar confirmaciones por correo electrónico, etc.
+        
+        return redirect('/compras')
+    else:
+        messages.error(request, 'Error al procesar la compra.')
+        return redirect('/compras')
 
 @csrf_exempt
 def create(request):
