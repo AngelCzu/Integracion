@@ -17,5 +17,8 @@ urlpatterns = [
     
     path('compras', views.compras, name='compras'),
     path('sumar/<int:sku>/', views.sumar_producto, name='sumar_producto'),
+    path('restar/<int:sku>/', views.restar_producto, name='restar_producto'),
+    path('webpay/create', views.create, name='create'),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

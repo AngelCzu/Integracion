@@ -1,19 +1,114 @@
-.img-fluid{
-    height: 70px
+.body{
+    overflow: hidden;
 }
 
-#btn-producto {
-    background-color: rgb(8, 128, 20);
-    color: var(--text-color);
-    border: none;
+.cart-container {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 20px;
+    align-items: center;
+  }
+  
+  .cart-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    flex-direction: column;
+  }
+  
+  .cart-item img {
+    width: 130px;
+    height: 130px;
+    margin: 15px;
     border-radius: 50%;
-    width: 0px; /* Cambia el tamaño del botón */
-    height: 25px; /* Cambia el tamaño del botón */
-    font-size: 20px; /* Cambia el tamaño del icono */        display: flex;
+  }
+  
+  .item{
+    background: #232323;
+    border-radius: 20px;
+    margin-top: 17px;
+    width: 700px;
+    display: flex;
+  }
+
+  .cart-item-details h3 {
+    margin-top: 0;
+  }
+  
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .quantity-control button {
+    background-color: transparent;
+    color: white;
+    border: none;
+  }
+
+  .precio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+  }
+  
+  .quantity-control span {
+    margin: 0 10px;
+  }
+  
+  .cart-summary {
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 20px;
+  }
+  
+  .checkout-btn {
+    background-color: rgb(6, 171, 22);
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .discount-code {
+    margin-top: 10px;
+  }
+  
+  .rating-stars {
+    display: flex;
     justify-content: center;
     align-items: center;
-    }
+    margin-top: 10px;
+  }
+  
+  .rating-stars span {
+    color: #ffc107;
+    margin-right: 5px;
+  }
 
-#btn-producto:hover {
-    background-color: #067c15; /* Cambia el color al pasar el cursor sobre el botón */
-}
+  .container{
+    display: flex;
+    width: 100%;
+    height: 649px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }

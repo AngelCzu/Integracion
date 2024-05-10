@@ -17,7 +17,7 @@
 
 
     <!-- -----------------------------------CARRITO-------------------------------------------------------- -->
-   
+    {% if user.is_authenticated %}
         <!-- Agregar el botón flotante del carrito -->
     <div id="carritoFlotante" class="carrito-flotante">
         <a href="compras"> <!-- Aquí colocas la URL de la página a la que quieres redirigir -->
@@ -27,6 +27,7 @@
             </button>
         </a>
     </div>
+    {% endif %}
     
 
 

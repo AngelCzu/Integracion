@@ -54,6 +54,8 @@ class Compra(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     fecha_compra = models.DateTimeField(auto_now_add=True)
+    cantidad = models.IntegerField(default=1)  # Nuevo campo agregado
 
     def __str__(self):
         return f'Compra de {self.producto.nombre} por {self.usuario.username} el {self.fecha_compra}'
+

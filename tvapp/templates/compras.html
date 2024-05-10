@@ -8,56 +8,91 @@
 {% endblock %}
 
 {% block body %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    Productos del Usuario
-                </div>
-                <div class="card-body">
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th scope="col">Imagen</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Precio</th>
-                                <th class="align-middle" scope="col">Cantidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for producto in productos_usuario %}
-                            <tr>
-                                <td style="width: 100px;">
-                                    <img class="img-fluid" src="{{ producto.imagen.url }}">
-                                </td>
-                                <td style="width: 270px;" class="align-middle">{{ producto.nombre }}</td>
-                                <td style="width: 80px;" class="align-middle">{{ producto.precio }}</td>
-                                <td class="align-middle" style="width: 120px;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                        <form method="post" action="{% url 'sumar_producto' producto.sku %}" style="margin-right: 5px;">
-                                            {% csrf_token %}
-                                            <button id="btn-restar" type="submit" class="btn bi bi-dash" style="padding: 5px;"></button>
-                                        </form>
-                                        <span style="width: 30px;">{{ producto.cantidad }}</span>
-                                        <form method="post" action="{% url 'sumar_producto' producto.sku %}" style="margin-left: 5px;">
-                                            {% csrf_token %}
-                                            <button id="btn-sumar" type="submit" class="btn bi bi-plus" style="padding: 5px;"></button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+
+{% if total < 1 %}
+        <div class="container">
+            <h3>No tienes nada en tu carro</h3>
+            <h4>Ve a la tienda para agregar cosas a tu carro</h4>
+            <a href="productos"> <!-- Aquí colocas la URL de la página a la que quieres redirigir -->
+                <button id="carritoBoton" class="carrito-boton">
+                    <i class="bi bi-cart"></i>
+                    <span id="cantidadCarrito" >0</span> <!-- Aquí se mostrará la cantidad en un círculo -->
+                </button>
+            </a>
+            
+        </div>
+{% else %}            
+   
+
+                            
+
+<div class="cart-container">
+    <div class="cart-item">
+        {% for producto in productos_usuario %}
+        <div class="item">
+            
+            <img src="{{ producto.imagen.url }}" alt="">
+            <div class="cart-item-details" style="width: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <h3>{{ producto.nombre }}</h3>
+                <p>{{ producto.descripcion }}</p>
+                <div class="quantity-control">
+                <form method="post" action="{% url 'restar_producto' producto.sku %}" style="margin-right: 5px;">
+                    {% csrf_token %}
+                    <button class="btn-resta">-</button>
+                </form>
+                <span>{{ producto.cantidad }}</span>
+                <form method="post" action="{% url 'sumar_producto' producto.sku %}" style="margin-left: 5px;">
+                    {% csrf_token %}
+                    <button class="btn-suma">+</button>
+                </form>
                 </div>
             </div>
+            <div class="precio"><span><strong>{{ producto.precio }}</strong> CLP</span></div>
         </div>
+        {% endfor %}
+    </div>
+    <div class="cart-summary">
+        <h3>Resumen</h3>
+        {% if total == 1 %}
+            <p>{{ total }} producto</p>
+        {% else %}
+            <p>{{ total }} productos</p>
+        {% endif %}
+        <h4>Total: <span>{{ total_precio}} CLP</span></h4>
+        <form id="webpayForm" method="POST" action="{% url 'create' %}">
+            {% csrf_token %}
+            <input type="hidden" id="total_precio" name="total_precio" value="{{ total_precio }}">
+            <button type="submit" class="checkout-btn">Pagar con Webpay Plus</button>
+        </form>
+        
     </div>
 </div>
+{% endif %}
 
 {% endblock %}
 
 {% block script %}
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#webpayForm').submit(function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe normalmente
+    
+            // Realizar solicitud AJAX a la vista 'create'
+            $.ajax({
+                type: 'POST',
+                url: '/webpay/create',
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Redireccionar al usuario a la URL de pago
+                    window.location.href = response.url;
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error en la solicitud: ' + error);
+                }
+            });
+        });
+    });
+    
+</script>
 {% endblock %}

@@ -4,10 +4,16 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Count
+
+from django.db.models import Sum
+from django.http import JsonResponse
+from transbank.webpay.webpay_plus.transaction import Transaction
 
 from django.contrib import messages
 
+
+import requests
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -114,19 +120,28 @@ def compras(request):
     skus_productos = [compra.producto.sku for compra in compras_usuario]
 
     # Obtener la cantidad de productos por SKU
-    cantidad_por_sku = Compra.objects.filter(usuario=request.user).values('producto__sku').annotate(cantidad=Count('producto__sku'))
+    cantidad_por_sku = Compra.objects.filter(usuario=request.user).values('producto__sku').annotate(cantidad=Sum('cantidad'))
 
     # Crear un diccionario con el SKU como clave y la cantidad como valor
     cantidad_sku_dict = {item['producto__sku']: item['cantidad'] for item in cantidad_por_sku}
 
     # Obtener todos los productos asociados a los SKUs obtenidos
     productos_usuario = Producto.objects.filter(sku__in=skus_productos)
-
+    
     # Agregar la cantidad de productos a cada producto
     for producto in productos_usuario:
         producto.cantidad = cantidad_sku_dict.get(producto.sku, 0)
 
-    return render(request, 'compras.html', {'productos_usuario': productos_usuario})
+    # Sumar la cantidad total de productos
+    compras_totales = sum(cantidad_sku_dict.values())
+
+    # Calcular el precio total de los productos
+    total_precio = sum(producto.precio * producto.cantidad for producto in productos_usuario)
+
+    return render(request, 'compras.html', {'productos_usuario': productos_usuario,
+                                            'total': compras_totales,
+                                            'total_precio': total_precio})
+
 
 @login_required
 def sumar_producto(request, sku):
@@ -140,3 +155,68 @@ def sumar_producto(request, sku):
     else:
         messages.error(request, 'Error al procesar la compra.')
         return redirect('/compras')
+    
+def restar_producto(request, sku):
+    if request.method == 'POST':
+        producto = get_object_or_404(Producto, sku=sku)
+        usuario = request.user
+        compra_existente = Compra.objects.filter(usuario=usuario, producto=producto).first()
+        if compra_existente:
+            # Si el producto está en la lista de compras y la cantidad es mayor que 1, restar uno
+            if compra_existente.cantidad > 1:
+                compra_existente.cantidad -= 1
+                compra_existente.save()
+            else:
+                # Si la cantidad es 1, eliminar la entrada de compra
+                compra_existente.delete()
+        else:
+            # Si el producto no está en la lista de compras, mostrar un mensaje de error
+            messages.error(request, 'El producto no está en la lista de compras.')
+        
+        # Redirigir de vuelta a la página de compras después de realizar la operación
+        return redirect('/compras')
+
+    else:
+        messages.error(request, 'Error al procesar la compra.')
+        return redirect('/compras')
+    
+
+@csrf_exempt
+def create(request):
+    # Datos de la transacción
+    buy_order = 'ordenCompra12345678'
+    session_id = 'sesion1234557545'
+    amount = request.POST.get('total_precio')
+    return_url = 'http://www.tu-sitio.com/webpay/retorno'
+
+    # Credenciales de Webpay Plus
+    tbk_api_key_id = '597055555532'
+    tbk_api_key_secret = '579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C'
+
+    # URL del endpoint de Webpay Plus
+    url = 'https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/transactions'
+
+    # Crear objeto con los datos de la transacción
+    data = {
+        'buy_order': buy_order,
+        'session_id': session_id,
+        'amount': amount,
+        'return_url': return_url
+    }
+
+    # Realizar solicitud POST a la API de Webpay Plus
+    response = requests.post(url, headers={
+        'Tbk-Api-Key-Id': tbk_api_key_id,
+        'Tbk-Api-Key-Secret': tbk_api_key_secret,
+        'Content-Type': 'application/json'
+    }, json=data)
+
+    # Verificar si la solicitud fue exitosa
+    if response.status_code == 200:
+        # Devolver la URL de pago
+        return JsonResponse({
+            'url': response.json()['url']
+        })
+    else:
+        # Manejar el error
+        return JsonResponse({'error': 'No se pudo crear la transacción'}, status=400)
