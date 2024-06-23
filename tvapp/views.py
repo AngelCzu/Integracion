@@ -64,10 +64,10 @@ def cargarstore(request):
     prod_tierra = Producto.objects.filter(categoria_id=2)
 
     # Obtener productos de la categoría Flores
-    prod_flores = Producto.objects.filter(categoria_id=3)
+    prod_flores = Producto.objects.filter(categoria_id=4)
 
     # Obtener productos de la categoría Arbustos
-    prod_arbustos = Producto.objects.filter(categoria_id=4)
+    prod_arbustos = Producto.objects.filter(categoria_id=3)
     cantidad_compras = Compra.objects.filter(usuario=usuario_actual).count()
 
     # Renderizar la plantilla HTML y pasar los productos filtrados como contexto
