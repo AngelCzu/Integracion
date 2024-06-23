@@ -5,6 +5,47 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
 <title>Inicio</title>
+<style>
+  .modal {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 200; /* Asegura que el modal esté por encima del sidebar */
+  }
+  .modal-content {
+      background-color: var(--sidebar-color);
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      color: var(--text-color);
+      width: 300px; /* Ancho del recuadro pequeño */
+  }
+  .modal-buttons {
+      margin-top: 20px;
+  }
+  .modal-buttons button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .btn-confirm {
+      background-color: #4CAF50;
+      color: white;
+  }
+  .btn-cancel {
+      background-color: #f44336;
+      color: white;
+  }
+</style>
 {% endblock %}
 
 {% block body %}
@@ -124,7 +165,17 @@
       </div>
     </div>
    
-  
+
+    
+    <div class="modal" id="announcement">
+      <div class="modal-content">
+          <p>¿Deseas comer unas ricas hamburguesas? Podrás econtrarlo en la página Spart Sagan?</p>
+          <div class="modal-buttons">
+              <button class="btn-confirm" onclick="redirect()">Sí</button>
+              <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+          </div>
+      </div>
+  </div>
 
   </body>
   <!-- Fin Tienda --> 
@@ -134,5 +185,18 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <script src="{% static 'js/Clima.js' %}"></script>
+<script>
+  window.onload = function() {
+      document.getElementById('announcement').style.display = 'flex';
+  };
+
+  function redirect() {
+      window.location.href = "http://186.64.123.144";
+  }
+
+  function closeModal() {
+      document.getElementById('announcement').style.display = 'none';
+  }
+</script>
 
 {% endblock %}
